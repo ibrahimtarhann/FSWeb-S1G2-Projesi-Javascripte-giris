@@ -86,27 +86,39 @@ OYUNUN KURALLARI: Makas Kağıdı yener| Kağıt Taşı yener | Taş Makas'ı ye
 */
 
 function oyun(oyuncu, bilgisayar) {
-  let otercih ;
-  let btercih ;
-
-  if ( otercih === "Makas" && btercih === "Kağıt" || otercih === "Kağıt" && btercih === "Taş" || otercih === "Taş" && btercih === "Makas") {
-    console.log("Kazandın!")
+  if((oyuncu === "Taş" && bilgisayar === "Makas" ) || (oyuncu === "Makas" && bilgisayar === "Kağıt") || (oyuncu === "Kağıt" && bilgisayar === "Taş")) {
+   return "Kazandın!;"
   }
-  else if (otercih === "Kağıt" && btercih === "Makas" || otercih === "Taş" && btercih === "Makas" || otercih === "Makas" && btercih === "Taş") {
-    console.log("Kaybettin!")
+  else if ((oyuncu === "Taş" && bilgisayar === "Taş")  || (oyuncu === "Makas" && bilgisayar === "Makas") || (oyuncu === "Kağıt" && bilgisayar === "Kağıt")) {
+     return "Beraberlik!";
   }
   else {
-       console.log("Beraberlik");
+    return "Kaybettin!";
   }
 }
+
+
 
 // Şimdi Taş, Kağıt, Makas oyununu bilgisayara karşı oynayalım!
 /*
 Öncelikle aşağıdakileri yap:
 1. Bilgisayarın seçimini rastgele oluşturacağım bir fonksiyon tanımla. Örn: 
-   function bilgisayarinSecimi() {
-   
+*/
+   function bilgisayarinSecimi(rastgele) {
+    let rastgele = Math.random();
+
+    if (rastgele < 0.5) {
+      return "Makas";
+    }
+    else if (rastgele > 0.5) {
+      return "Taş";
+    }
+    else {
+      return "Kağıt";
+    }
+    console.log(oyun("Makas", bilgisayarinSecimi()));
    }
+   /*
 2. Fonsiyonun içinde bilgisayarın seçimi için bir değişken tanımla
 3. Math.random'ı kullanarak bilgisayarın seçimini oluşturun (Math.random 0-1 arasında bir değer verecek)
 4. Bu rastgele değeri "Taş", "Kağıt" veya "Makas"a dönüştüren bir koşul oluşturun
